@@ -1,31 +1,32 @@
 import './App.css';
 import searchicon from './search.svg';
 import MovieCard from './MovieCard';
-import { React, useEffect } from 'react';
-
-// 62932579
-
-const API = 'http://www.omdbapi.com?apikey=62932579';
-
-const movie1 = {
-  Title: 'Superman & Lois',
-  Year: '2021–',
-  imdbID: 'tt11192306',
-  Type: 'series',
-  Poster:
-    'https://m.media-amazon.com/images/M/MV5BOTA2MDVhMWItNTYwYi00OTcyLWJjZmEtNTQ2NTAxMDQyYTQwXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg',
-};
+import { React, useEffect, useState } from 'react';
+import moviesData from './movies.json';
 
 function App() {
-  const findmovie = async (title) => {
-    const response = await fetch(`${API}&s=${title}`);
-    const data = await response.json();
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-    console.log(data.Search);
+  const findMovies = (title) => {
+    const filteredMovies = moviesData.filter((movie) =>
+      movie.Title.toLowerCase().includes(title.toLowerCase())
+    );
+    setMovies(filteredMovies);
+  };
+
+  const handleSearch = () => {
+    findMovies(searchTerm);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   useEffect(() => {
-    findmovie('Superman');
+    findMovies(''); // Show all movies by default
   }, []);
 
   return (
@@ -34,13 +35,25 @@ function App() {
 
       <div className="search">
         <input
-          placeholder="Find movies to watch this friday"
-          onChange={() => {}}
+          placeholder="Find movies to watch this Friday"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
         ></input>
-        <img src={searchicon} alt="search" onClick={() => {}} />
+        <img src={searchicon} alt="search" onClick={handleSearch} />
       </div>
 
-      <div className="container"></div>
+      {movies?.length > 0 ? (
+        <div className="container">
+          {movies.map((movie, index) => (
+            <MovieCard key={index} movie={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty">
+          <h2>No movies found</h2>
+        </div>
+      )}
     </div>
   );
 }
