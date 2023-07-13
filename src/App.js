@@ -39,7 +39,7 @@ function App() {
   };
 
   useEffect(() => {
-    findMovies(''); // Show all movies by default
+    findMovies('');
     document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
 
