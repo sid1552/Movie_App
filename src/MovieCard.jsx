@@ -1,15 +1,16 @@
-import React from 'react';
+const MovieCard = ({ movie, onClick }) => {
+  const handleCardClick = () => {
+    onClick(movie);
+  };
 
-const MovieCard = ({ movie }) => {
   return (
-    <div className="movie">
+    <div className="movie" onClick={handleCardClick}>
       <div>
         <p>{movie.Year}</p>
       </div>
       <div>
-        <img src={movie.Poster} alt={movie.Title}></img>
+        <img src={movie.Poster} alt={movie.Title} />
       </div>
-
       <div>
         <span>{movie.Type}</span>
         <h3>{movie.Title}</h3>
@@ -19,6 +20,3 @@ const MovieCard = ({ movie }) => {
 };
 
 export default MovieCard;
-
-
-

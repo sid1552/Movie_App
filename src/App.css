@@ -229,3 +229,56 @@ h1 {
     margin: 1rem;
   }
 }
+
+.description {
+  margin-top: 1.25rem;
+  color: white;
+}
+
+.description h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+
+.description p {
+  font-size: 1rem;
+}
+
+@media (max-width: 48rem) {
+  .description {
+    margin-top: 0.625rem;
+  }
+
+  .description h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description p {
+    font-size: 0.875rem;
+  }
+}
+
+.rating {
+  margin-top: 1rem;
+}
+
+.rating h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  display: flex;
+}
+
+.star {
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.star.selected {
+  color: gold;
+}

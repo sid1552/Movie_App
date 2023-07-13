@@ -1,12 +1,14 @@
 import './App.css';
 import searchicon from './search.svg';
 import MovieCard from './MovieCard';
-import { React, useEffect, useState } from 'react';
+import MovieDetails from './MovieDetails';
+import React, { useEffect, useState } from 'react';
 import moviesData from './movies.json';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const findMovies = (title) => {
     const filteredMovies = moviesData.filter((movie) =>
@@ -25,6 +27,10 @@ function App() {
     }
   };
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
   useEffect(() => {
     findMovies(''); // Show all movies by default
   }, []);
@@ -39,14 +45,16 @@ function App() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
-        ></input>
+        />
         <img src={searchicon} alt="search" onClick={handleSearch} />
       </div>
 
-      {movies?.length > 0 ? (
+      {selectedMovie ? (
+        <MovieDetails movie={selectedMovie} />
+      ) : movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
-            <MovieCard key={index} movie={movie} />
+            <MovieCard key={index} movie={movie} onClick={handleMovieClick} />
           ))}
         </div>
       ) : (
