@@ -1,6 +1,8 @@
-const MovieCard = ({ movie, onClick }) => {
+const MovieCard = ({ movie, onClick, disableClick }) => {
   const handleCardClick = () => {
-    onClick(movie);
+    if (!disableClick) {
+      onClick(movie);
+    }
   };
 
   return (

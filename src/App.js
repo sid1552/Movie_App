@@ -4,11 +4,13 @@ import MovieCard from './MovieCard';
 import MovieDetails from './MovieDetails';
 import React, { useEffect, useState } from 'react';
 import moviesData from './movies.json';
+import DayNightCycle from './DayNightCycle';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const findMovies = (title) => {
     const filteredMovies = moviesData.filter((movie) =>
@@ -31,13 +33,28 @@ function App() {
     setSelectedMovie(movie);
   };
 
+  const handleModeToggle = () => {
+    setDarkMode(!darkMode);
+  };
+
   useEffect(() => {
     findMovies(''); // Show all movies by default
-  }, []);
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.backgroundColor = '#212426';
+    } else {
+      document.body.style.backgroundColor = '#ffffff';
+    }
+  }, [darkMode]);
 
   return (
     <div className="app">
-      <h1>Friyay Movies</h1>
+      <a href="/" className="home-link">
+        <h1>Friyay Movies</h1>
+      </a>
 
       <div className="search">
         <input
@@ -50,7 +67,7 @@ function App() {
       </div>
 
       {selectedMovie ? (
-        <MovieDetails movie={selectedMovie} />
+        <MovieDetails movie={selectedMovie} darkMode={darkMode} />
       ) : movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
@@ -62,6 +79,8 @@ function App() {
           <h2>No movies found</h2>
         </div>
       )}
+
+      <DayNightCycle darkMode={darkMode} onModeToggle={handleModeToggle} />
     </div>
   );
 }

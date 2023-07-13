@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MovieCard from './MovieCard';
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, darkMode }) => {
   const [rating, setRating] = useState(null);
 
   useEffect(() => {
@@ -17,9 +17,13 @@ const MovieDetails = ({ movie }) => {
     localStorage.setItem(movie.imdbID, newRating);
   };
 
+  if (!movie) {
+    return null; // Render nothing when movie is not selected
+  }
+
   return (
-    <div className="movie-details">
-      <MovieCard movie={movie} />
+    <div className={`movie-details ${darkMode ? 'dark' : 'light'}`}>
+      <MovieCard movie={movie} disableClick={true} />
       <div className="description">
         <h2>About</h2>
         <p>{movie.Description}</p>
