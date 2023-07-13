@@ -16,6 +16,8 @@ body {
   font-family: var(--font-roboto);
 }
 
+/* #---------------------      Day/Night    ---------------------------------- */
+
 .dark-mode {
   background-color: #212426;
 }
@@ -54,6 +56,8 @@ body {
   color: #ffa500; /* orange color */
 }
 
+/* ------------------     App Component    --------------------------------------------- */
+
 .app {
   padding: 4rem;
 
@@ -73,6 +77,8 @@ h1 {
   color: var(--text-color);
   width: fit-content;
 }
+
+/* ----------------------------------    Search Bar    -----------------------------     */
 
 .search {
   width: 71%;
@@ -123,6 +129,8 @@ h1 {
   font-family: var(--font-raleway);
 }
 
+/* ------------------   Container of Movies  ---------------------  */
+
 .container {
   width: 100%;
   margin-top: 3rem;
@@ -132,6 +140,8 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* ------------------   Movie Card  --------------------- ---------------------------*/
 
 .movie {
   width: 310px;
@@ -247,6 +257,8 @@ h1 {
   }
 }
 
+/* ------------------   Movie Details  ---------------------  */
+
 .description {
   margin-top: 1.25rem;
   color: var(--text-color); /* Default text color */
@@ -300,6 +312,8 @@ h1 {
 .star.selected {
   color: gold;
 }
+
+/* ------------------   Footer  ---------------------  */
 
 .footer {
   padding: 20px;
