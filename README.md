@@ -5,7 +5,7 @@ Welcome to FriyayMovie, a movie browsing and rating application built with React
 ## Features
 
 - Movie search: Users can search for movies by title, and the application will display a list of matching results.
-- Movie details: Clicking on a movie from the search results will show detailed information about the selected movie, including its title, release year, genre, and plot.
+- Movie details: Clicking on a movie from the search results will show detailed information about the selected movie, including its title, release year, and plot.
 - Movie rating: Users can rate movies on a scale of 1 to 5 stars. The rating is stored locally, allowing users to revisit the application and see their previous ratings.
 - Light-Dark Mode: The application features a visually dynamic light-dark mode, creating an immersive experience as the interface adapts to the user's preferred color scheme.
 
