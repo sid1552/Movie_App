@@ -1,4 +1,4 @@
-# FriyayMovie
+# FriyayMovies
 
 Welcome to FriyayMovie, a movie browsing and rating application built with React! This project allows users to search for movies, view their details, rate them, and even experience a day-night cycle for a visually appealing interface. The application stores movie ratings locally and retrieves movie data from a JSON file.
 
