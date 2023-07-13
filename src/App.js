@@ -5,6 +5,7 @@ import MovieDetails from './MovieDetails';
 import React, { useEffect, useState } from 'react';
 import moviesData from './movies.json';
 import DayNightCycle from './DayNightCycle';
+import Footer from './Footer';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -81,6 +82,7 @@ function App() {
       )}
 
       <DayNightCycle darkMode={darkMode} onModeToggle={handleModeToggle} />
+      <Footer />
     </div>
   );
 }

@@ -17,6 +17,12 @@ const DayNightCycle = ({ darkMode, onModeToggle }) => {
       '--border-color',
       nightMode ? 'transparent' : '#000000'
     );
+
+    // Set the footer color based on the mode
+    document.documentElement.style.setProperty(
+      '--footer-color',
+      nightMode ? '#ffffff' : '#000000'
+    );
   }, [nightMode]);
 
   const handleModeToggle = () => {

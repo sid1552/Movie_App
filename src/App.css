@@ -300,3 +300,19 @@ h1 {
 .star.selected {
   color: gold;
 }
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: -40px;
+  z-index: -1;
+  color: var(--footer-color, black);
+}
+
+.footertext {
+  margin: 0;
+  font-size: 18px;
+}
